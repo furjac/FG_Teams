@@ -4,5 +4,7 @@ This tool was created with python no other languages this software has too many 
 
 # Installation
 git clone https://github.com/furjac/Advanced-payload-generator.git
+
 cd Advanced-payload-generator
+
 sudo python main.py
