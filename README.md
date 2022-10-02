@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers)
+[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total)
   
 
 # Advanced-payload-generator
@@ -14,3 +14,14 @@ git clone https://github.com/furjac/Advanced-payload-generator.git
 cd Advanced-payload-generator
 
 sudo python main.py
+
+# Running
+sudo python main.py
+
+
+# Features
+1. Backdoor in original apk
+2. more options 
+3. easy to use interface
+4. Backdoor app encryption
+5. all types of encoders and encryption supported
