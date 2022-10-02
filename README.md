@@ -1,4 +1,4 @@
-/cocoapods/p/:spec
+
   
 
 # Advanced-payload-generator
