@@ -25,3 +25,6 @@ sudo python main.py
 3. easy to use interface
 4. Backdoor app encryption
 5. all types of encoders and encryption supported
+
+# Prerequisites
+1. install chaotic-aur in arch linux if u dont have
