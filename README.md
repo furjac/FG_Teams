@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total)
+[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total) ![Discord](https://img.shields.io/discord/1026098018929360967?label=Discord&logo=Discord&logoColor=cyan)
   
 
 # Advanced-payload-generator
