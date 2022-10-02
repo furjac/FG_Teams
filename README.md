@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator)
+[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers)
   
 
 # Advanced-payload-generator
