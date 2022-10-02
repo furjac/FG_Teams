@@ -1,4 +1,4 @@
-/apm/l/:Advanced-payload-generator
+/cocoapods/p/:spec
   
 
 # Advanced-payload-generator
