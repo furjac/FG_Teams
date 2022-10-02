@@ -1,4 +1,4 @@
-![GitHub followers](https://img.shields.io/github/followers/furjac?style=social)
+[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator)
   
 
 # Advanced-payload-generator
