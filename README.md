@@ -1,5 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total) ![Discord](https://img.shields.io/discord/1026098018929360967?label=Discord&logo=Discord&logoColor=cyan) 
-  
+[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total) [![Join the FG_Trams discord server](https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2)](https://discord.gg/YN9RKxewsq)
 
 # Advanced-payload-generator
 This tool was created with python this software has too many pending works plz support me for all new updates in software Thanks, Love you all
