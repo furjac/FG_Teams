@@ -1,0 +1,463 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import os
+import sys
+import time
+import socket
+import random
+import getpass
+from os.path import isfile
+from subprocess import call
+from urllib.request import urlopen
+from time import strftime,localtime
+
+class Faded:
+	_iface = None
+	torrc = '/etc/tor/torrc'
+
+	def __init__(self):
+		Faded._iface = iface()
+
+	@staticmethod
+	def handle_networkmanager(do):
+		if do == 'stop':
+			log('[{0}] Killing network manager service --> '.format(timed()),warn=True)
+			os.popen('systemctl stop NetworkManager.service > /dev/null 2>&1')
+			time.sleep(3)
+			log('dead',err=True,end=True)
+		else:
+			log('[{0}] Starting network manager service --> '.format(timed()),warn=True)
+			os.popen('systemctl start NetworkManager.service > /dev/null 2>&1')
+			time.sleep(7)
+			log('actived',resp=True,end=True)
+
+	@staticmethod
+	def kill_process():
+		log('[{0}] Killing dangerous processes to prevent leaks --> '.format(timed()),warn=True)
+		os.popen('killall -q -9 chrome dropbox iceweasel skype icedove thunderbird firefox firefox-esr chromium xchat hexchat transmission steam kget xdman > /dev/null 2>&1')
+		log('dead',err=True,end=True)
+
+	@staticmethod
+	def clear_caches():
+		log('[{0}] Cleaning caches to prevent leaks --> '.format(timed()),nor=True)
+		os.popen('bleachbit -c adobe_reader.cache chromium.cache chromium.current_session chromium.history elinks.history \
+			emesene.cache epiphany.cache firefox.url_history flash.cache flash.cookies google_chrome.cache google_chrome.history \
+			links2.history opera.cache opera.search_history opera.url_history system.cache system.tmp 2>&1 /dev/null')
+		log('done',resp=True,end=True)
+
+	@staticmethod
+	def change_mac(job,filters=["","y","yes","n","no"]):
+		while 1:
+			ask = input("[{0}] Do you want to change mac address?(y/n) ".format(timed()))
+			if ask.lower() not in filters:
+				continue
+			else:
+				break
+		if ask == "" or ask == "y" or ask == "yes":
+			if job == "start":
+				proc = os.popen("macchanger -A %s | tail -n 1 | sed 's/  //g'" % Faded._iface).read()
+				os.popen("ip link set %s up" % Faded._iface)
+			else:
+				proc = os.popen("macchanger -p %s | tail -n 1 | sed 's/  //g'" % Faded._iface).read()
+				os.popen("ip link set %s up" % Faded._iface)
+			log('|-- {}'.format(str(proc).strip('\n')),resp=True,end=True)
+		else:
+			log('[-- Mac address not changed!!!',warn=True,end=True)
+
+	@staticmethod
+	def check_torrc_configs():
+		if isfile(Faded.torrc):
+			if not 'VirtualAddrNetwork' in open(Faded.torrc).read():
+				with open(Faded.torrc,'a+') as torconf:
+					torconf.write(tor_config())
+
+	@staticmethod
+	def redirect_to_tor():
+		log('[{0}] Redirecting to tor --> '.format(timed()),warn=True)
+
+		rules = iptables_rules(Faded._iface)
+
+		with open('/opt/load_rules.sh','w+') as script:
+			script.write(rules)
+		os.system('sh ' + '/opt/load_rules.sh')
+		time.sleep(7)
+		log('done',resp=True,end=True)
+
+	@staticmethod
+	def handle_tor(job,fnull=open(os.devnull,'w')):
+		if job == "start":
+			log('[{0}] (Re)start your tor service --> '.format(timed(),warn=True))
+			TOR_STAT = os.popen('systemctl status tor | grep \"Active\" | awk \'{print $2}\'').read()
+			if TOR_STAT == "active":
+				call(['systemctl','restart','tor'],stdout=fnull,stderr=fnull)
+			else:
+				call(['systemctl','start','tor'],stdout=fnull,stderr=fnull)
+			log('done',resp=True,end=True)
+		else:
+			log('[{0}] Stop tor service --> '.format(timed(),warn=True))
+			call(['systemctl','stop','tor'],stdout=fnull,stderr=fnull)
+			log('done',resp=True,end=True)
+
+	@staticmethod
+	def _flush_iptables():
+		log('[{0}] Flush iptables rules --> '.format(timed(),warn=True))
+		with open('/opt/flush_iptables.sh','w+') as script:
+			script.write(flush_iptables())
+		os.system('sh ' + '/opt/flush_iptables.sh')
+		log('done',resp=True,end=True)
+
+	@staticmethod
+	def update_resolv():
+		os.popen('echo \"nameserver 127.0.0.1\" > /etc/resolv.conf')
+		log('[{0}] Updated resolv.conf to use tor'.format(timed()),resp=True,end=True)
+
+	@staticmethod
+	def check_status():
+		getip = urlopen('http://ipinfo.io/ip').read()
+		PUB_IP = getip.decode('utf-8').strip()
+		TOR_STAT = os.popen('systemctl status tor | grep \"Active\" | awk \'{print $2}\'').read()
+		log('==> Tor: %s' % TOR_STAT)
+		log('==> Current public ip: %s' % str(PUB_IP),end=True)
+
+class DoJob(Faded):
+	def __init__(self,job):
+		Faded.__init__(self)
+		if job == "start":
+			log('[{0}] Starting Gh0stN3t'.format(timed()),warn=True,end=True)
+			self._check_permission()
+			self.start_faded()
+
+		elif job == "stop":
+			log('[{0}] Stoping Gh0stN3t'.format(timed()),warn=True,end=True)
+			self._check_permission()
+			self.stop_faded()
+
+		else:
+			self.status()
+	
+	@staticmethod
+	def _check_permission():
+		id = os.getuid()
+		if id != 0:
+			log('[-] You have not enough permission to do this job.',err=True,end=True)
+			sys.exit(0)
+		else : pass
+
+	@staticmethod
+	def start_faded():
+		try:
+			DoJob.handle_networkmanager('stop')
+			DoJob.kill_process()
+			DoJob.clear_caches()
+			DoJob.change_mac("start")
+			DoJob.check_torrc_configs()
+			DoJob.redirect_to_tor()
+			DoJob.handle_tor("start")
+			DoJob.handle_networkmanager('start')
+			DoJob.update_resolv()
+		except KeyboardInterrupt:
+			sys.exit(log('[-] You stoped the program.',err=True))
+
+	@staticmethod
+	def stop_faded():
+		try:
+			DoJob.handle_networkmanager('stop')
+			DoJob.kill_process()
+			DoJob.clear_caches()
+			DoJob.change_mac("stop")
+			DoJob.handle_tor("stop")
+			DoJob._flush_iptables()
+			DoJob.handle_networkmanager("start")
+		except KeyboardInterrupt:
+			sys.exit(log('[-] You stoped the program.',err=True))
+
+	@staticmethod
+	def status():
+		try:
+			DoJob.check_status()
+		except KeyboardInterrupt:
+			sys.exit(log('[-] You stoped the program.',err=True))
+
+def timed():
+    return(strftime("%H:%M:%S",localtime()))
+
+def log(msg,err=False,warn=False,nor=False,resp=False,end=False):
+	msg = str(msg)
+	_nor = '\033[33m'
+	_err = '\033[1;91m'
+	_warn = '\033[1;93m'
+	_resp = '\033[1;92m'
+
+	if err == True:
+		msg = _err + msg + _nor
+	elif warn == True:
+		msg = _warn + msg + _nor
+	elif resp == True:
+		msg = _resp + msg + _nor
+	else:
+		msg = _nor + msg
+ 
+	if end:
+		sys.stdout.write(msg+'\n')
+	else:
+		sys.stdout.write(msg)
+
+	sys.stdout.flush()
+
+def iface(_iface=None):
+	_i = os.popen('ip link | grep \"state\" | awk {\'print $2 $9\'}').read()
+	ifaces = _i.split('\n')
+	_l = len(ifaces)
+	ifaces.pop(_l-1)
+
+	_list  = {}
+	for i in ifaces:
+		item = i.split(':')
+		_list[item[0]] = item[1]
+		keys = _list.keys()
+		for key in keys:
+			stat = _list[key]
+			if stat == "UP":
+				_iface = key
+			else:
+				pass
+	if _iface == None:
+		sys.exit(log
+				(
+					'[-] Can\'t detect actived network interface.Please check your connection.',err=True,end=True
+				)
+			)
+	else:
+		return _iface
+
+def tor_config():
+	configure = r'''
+VirtualAddrNetwork 10.192.0.0/10
+AutomapHostsOnResolve 1
+TransPort 9040
+DNSPort 5353
+
+SocksPort 9050
+DNSListenAddress 127.0.0.1
+TransListenAddress 127.0.0.1
+AutomapHostsSuffixes .exit,.onion
+
+Log notice file /tmp/ghostnet.log
+
+HardwareAccel 1
+
+TestSocks 1
+WarnUnsafeSocks 1
+AllowNonRFC953Hostnames 0
+AllowDotExit 0
+
+ClientRejectInternalAddresses 1
+
+NewCircuitPeriod 40
+MaxCircuitDirtiness 600
+MaxClientCircuitsPending 48
+UseEntryGuards 1
+UseEntryGuardsAsDirGuards 1
+EnforceDistinctSubnets 1
+'''
+	return configure
+
+def flush_iptables():
+	rules = r'''
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -t raw -F
+iptables -t raw -X
+iptables -t security -F
+iptables -t security -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+'''
+	return rules
+
+def iptables_rules(iface):
+	rules = r'''
+#!/bin/sh
+
+_tor_uid=`id -u tor` #ArchLinux/Gentoo
+_trans_port="9040"
+_dns_port="5353"
+_virt_addr="10.192.0.0/10"
+
+_out_if="{0}"
+
+# Your incoming interface and assigned local IP (Gateway)
+_inc_if="{0}"
+_inc_ip="192.168.1.1"
+
+# LAN destinations that shouldn't be routed through Tor
+_non_tor="127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
+
+# Other IANA reserved blocks (These are not processed by tor and dropped by default)
+_resv_iana="0.0.0.0/8 100.64.0.0/10 169.254.0.0/16 192.0.0.0/24 192.0.2.0/24 192.88.99.0/24 198.18.0.0/15 198.51.100.0/24 203.0.113.0/24 224.0.0.0/3"
+
+### Don't lock yourself out after the flush
+#iptables -P INPUT ACCEPT
+#iptables -P OUTPUT ACCEPT
+
+### Flush iptables
+iptables -F
+iptables -t nat -F
+
+### *nat PREROUTING (For middlebox)
+iptables -t nat -A PREROUTING -d $_virt_addr -i $_inc_if -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports $_trans_port
+iptables -t nat -A PREROUTING -i $_inc_if -p udp --dport 53 -j REDIRECT --to-ports $_dns_port
+
+# Allow lan access for hosts in $_non_tor
+for _lan in $_non_tor; do
+   iptables -t nat -A PREROUTING -i $_inc_if -d $_lan -j RETURN
+done
+
+for _iana in $_resv_iana; do
+   iptables -t nat -A PREROUTING -i $_inc_if -d $_iana -j RETURN
+done
+
+iptables -t nat -A PREROUTING -i $_inc_if -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports $_trans_port
+
+### *nat OUTPUT (For local redirection)
+# nat .onion addresses
+iptables -t nat -A OUTPUT -d $_virt_addr -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports $_trans_port
+
+# nat dns requests to Tor
+iptables -t nat -A OUTPUT -d 127.0.0.1/32 -p udp -m udp --dport 53 -j REDIRECT --to-ports $_dns_port
+
+# Don't nat the Tor process, the loopback, or the local network
+iptables -t nat -A OUTPUT -m owner --uid-owner $_tor_uid -j RETURN
+iptables -t nat -A OUTPUT -o lo -j RETURN
+
+# Allow lan access for hosts in $_non_tor
+for _lan in $_non_tor; do
+  iptables -t nat -A OUTPUT -d $_lan -j RETURN
+done
+
+for _iana in $_resv_iana; do
+  iptables -t nat -A OUTPUT -d $_iana -j RETURN
+done
+
+# Redirect all other pre-routing and output to Tor's TransPort
+iptables -t nat -A OUTPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports $_trans_port
+
+### *filter INPUT
+# Don't forget to grant yourself ssh access from remote machines before the DROP.
+#iptables -A INPUT -i $_out_if -p tcp --dport 22 -m state --state NEW -j ACCEPT
+
+iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+
+# Allow DNS lookups from connected clients and internet access through tor.
+iptables -A INPUT -d $_inc_ip -i $_inc_if -p udp -m udp --dport $_dns_port -j ACCEPT
+iptables -A INPUT -d $_inc_ip -i $_inc_if -p tcp -m tcp --dport $_trans_port --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+
+# Allow INPUT from lan hosts in $_non_tor
+# Uncomment these 3 lines to enable.
+#for _lan in $_non_tor; do
+# iptables -A INPUT -s $_lan -j ACCEPT
+#done
+
+# Log & Drop everything else. Uncomment to enable logging.
+#iptables -A INPUT -j LOG --log-prefix "Dropped INPUT packet: " --log-level 7 --log-uid
+iptables -A INPUT -j DROP
+
+### *filter FORWARD
+iptables -A FORWARD -j DROP
+
+### *filter OUTPUT
+iptables -A OUTPUT -m state --state INVALID -j DROP
+iptables -A OUTPUT -m state --state ESTABLISHED -j ACCEPT
+
+# Allow Tor process output
+iptables -A OUTPUT -o $_out_if -m owner --uid-owner $_tor_uid -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m state --state NEW -j ACCEPT
+
+# Allow loopback output
+iptables -A OUTPUT -d 127.0.0.1/32 -o lo -j ACCEPT
+
+# Tor transproxy magic
+iptables -A OUTPUT -d 127.0.0.1/32 -p tcp -m tcp --dport $_trans_port --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+
+# Allow OUTPUT to lan hosts in $_non_tor
+# Uncomment these 3 lines to enable.
+#for _lan in $_non_tor; do
+# iptables -A OUTPUT -d $_lan -j ACCEPT
+#done
+
+# Log & Drop everything else. Uncomment to enable logging
+#iptables -A OUTPUT -j LOG --log-prefix "Dropped OUTPUT packet: " --log-level 7 --log-uid
+iptables -A OUTPUT -j DROP
+
+### Set default policies to DROP
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+
+'''.format(iface)
+	return rules
+
+def usage(purple='\033[35m'):
+	global hostname
+
+	_ROOT = os.getcwd()
+	username =  getpass.getuser()
+	hostname = socket.gethostname()
+	__name__ = sys.argv[0]
+	__author__ = "[sp3tr3]"
+	__version__ = "1.1"
+
+	txt =\
+'''\033[33m_______ _______ _______ _______ _______ _______ _______ _______
+|\     /|\     /|\     /|\     /|\     /|\     /|\     /|\     /|
+| +---+ | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |
+| |   | | |   | | |   | | |   | | |   | | |   | | |   | | |   | |
+| |G  | | |h  | | |0  | | |s  | | |t  | | |N  | | |3  | | |T  | |
+| +---+ | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |
+|/_____\|/_____\|/_____\|/_____\|/_____\|/_____\|/_____\|/_____\|
+			\033[0mH@unt your victim\033[0m\033[33m
+[Author]:# {0}
+\033[33m[Version]:# {1}
+\033[33m[\033[1;92m{2}\033[1;93m@\033[1;94m{3}\033[33m]─[\033[1;92m{4}\033[33m]$\033[1;92m{5} \033[33m[\033[1;92mstart\033[33m|\033[1;92mstop\033[33m|\033[1;92mstatus\033[33m]
+'''.format(purple+__author__,__version__,username,hostname,_ROOT,__name__)
+	return txt
+
+def check():
+	platform = os.system('which pacman > /dev/null 2>&1')
+	if platform == 0:
+		with open('/opt/ghostnet.log','r') as logf:
+			if logf.readline() == "checked=True":
+				pass
+				logf.close()
+			else:
+				log('[{0}] Install some require programs to run this script'.format(timed()),resp=True,end=True)
+				os.system('sudo pacman -Sy tor macchanger bleachbit --noconfirm')
+				with open('/opt/ghostnet.log','w') as logf:
+					logf.write('checked=True')
+					logf.close()
+	else:
+		sys.exit(log('[-] Can\'t run this script in your platform.',err=True,end=True))
+	main()
+
+def main():
+	try:
+		job = (sys.argv)[1]
+	except:
+		sys.exit(usage())
+	else:
+		job = job.lower()
+		filters = ['start','stop','status']
+
+		if job not in filters:
+			sys.exit(usage())
+		else:
+			DoJob(job)
+
+if __name__ == '__main__':
+	check()
