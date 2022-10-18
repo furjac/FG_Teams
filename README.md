@@ -12,7 +12,7 @@ git clone https://github.com/furjac/Advanced-payload-generator.git
 
 cd Advanced-payload-generator
 
-sudo python main.py
+sudo python FG_Teams.py
 
 # Running
 sudo python main.py
