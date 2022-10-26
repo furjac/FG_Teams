@@ -10,7 +10,7 @@ too many people avoid arch but this is the best os
 # Installation
 git clone https://github.com/furjac/Advanced-payload-generator.git
 
-cd Advanced-payload-generator
+cd FG_Teams
 
 sudo python FG_Teams.py
 
