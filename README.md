@@ -24,6 +24,7 @@ sudo python FG_Teams.py
 3. easy to use interface
 4. Backdoor app encryption
 5. all types of encoders and encryption supported
+6. Ghostnet script[anonymize tool] - credit mach1el
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
