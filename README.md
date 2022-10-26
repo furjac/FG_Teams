@@ -8,7 +8,7 @@ too many people avoid arch but this is the best os
 
 
 # Installation
-.git
+git clone httsp://github.com/furjac/FG_Teams.git
 
 cd FG_Teams
 
