@@ -8,7 +8,7 @@ too many people avoid arch but this is the best os
 
 
 # Installation
-git clone https://github.com/furjac/Advanced-payload-generator.git
+.git
 
 cd FG_Teams
 
