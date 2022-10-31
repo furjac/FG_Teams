@@ -25,6 +25,10 @@ sudo python FG_Teams.py
 4. Backdoor app encryption
 5. all types of encoders and encryption supported
 6. Ghostnet script[anonymize tool] - credit mach1el
+7. you can hack anything 
+8. piracy
+9. anonimize
+10. create any type of payload
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
