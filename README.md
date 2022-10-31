@@ -1,6 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total) [![Join the FG_Trams discord server](https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2)](https://discord.gg/YN9RKxewsq)
 
 # FG_TEAMS 
+Note: In piracy secttion none of the files and sources are hosted from me everything are link from other sites thank you!
 This tool was created with python this software has too many pending works plz support me for all new updates in software Thanks, Love you all
 
 ok this one is only made for arch linux because 
@@ -26,7 +27,7 @@ sudo python FG_Teams.py
 5. all types of encoders and encryption supported
 6. Ghostnet script[anonymize tool] - credit mach1el
 7. you can hack anything 
-8. piracy
+8. piracy download anything online books, movies, games, repacked games
 9. anonimize
 10. create any type of payload
 
