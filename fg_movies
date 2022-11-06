@@ -160,6 +160,7 @@ def down():
     options.add_extension('/usr/bin/ad.crx')
     options.add_argument("--disable-gpu")
     options.add_experimental_option("detach", True)
+    options.add_argument("--no-sandbox")
     options.add_argument('--allow-running-insecure-content')
 
     driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
