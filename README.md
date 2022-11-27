@@ -34,3 +34,7 @@ sudo python FG_Teams.py
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
 2. only Arch linux
+
+
+# Credits
+1. mach1el
