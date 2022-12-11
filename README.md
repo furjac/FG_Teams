@@ -2,6 +2,7 @@
 
 # FG_TEAMS 
 Note: In piracy secttion we do not store any files. We only embed or link to content which is hosted on 3rd party services. thank you!
+
 This tool was created with python this software has too many pending works plz support me for all new updates in software Thanks, Love you all
 
 ok this one is only made for arch linux because 
