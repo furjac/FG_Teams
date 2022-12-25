@@ -38,7 +38,7 @@ sudo python FG_Teams.py
 2. only Arch linux
 
 
-#FG-Viewer
+# FG-Viewer
 1.for the instructions plz contact me on discord
 
 
