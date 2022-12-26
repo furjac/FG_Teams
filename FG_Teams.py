@@ -31,7 +31,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [1] Android                    |       [7] IOS         ️                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [2] Windows                    |       [8] phishing                      ||                                                                                        
+        ||          [2] blackarch-Windows          |       [8] phishing                      ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [3] steganography              |       [9] Piracy                        ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -52,7 +52,7 @@ next_menu = """
         ||                                         |                                         ||                                                                                        
         ||          [12] Web-attacks               |       [18] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [13] wifi-attacks              |       [19] coming soon                  ||                                                                                        
+        ||          [13] blackarch-wifi             |       [19] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [14] coming soon               |       [20] coming soon                  ||                                                                       
         ||                                         |                                         ||                                                                                        
