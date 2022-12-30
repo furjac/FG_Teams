@@ -44,6 +44,8 @@ sudo python FG_Teams.py
 8. piracy download anything online books, movies, games, repacked games
 9. anonimize
 10. create any type of payload
+11. Generate powerful wordlist
+12. Hack almost everything ios,mac,etc...
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
