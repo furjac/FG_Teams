@@ -20,7 +20,7 @@ warnings.filterwarnings("ignore")
 # note there is too many things pending in this software it will be updated soon
 
 
-script_version = '1.5.10'
+script_version = '1.5.11'
 
 
 # <---main-menu--->
@@ -846,6 +846,8 @@ def en_monitor():
     print(f"{selected_interface} is now in monitor mode.")
 
 def showIp_and_public():
+    os.system('clear')
+    print(Fore.BLUE, banner)
     ip = socket.gethostbyname(socket.gethostname())
     print("Your IP address is:", ip)
 
@@ -855,15 +857,16 @@ def showIp_and_public():
 
 
 def show_mac_addr():
+    os.system('clear')
+    print(Fore.BLUE, banner)
     mac = get_mac_address()
     print("Your MAC address is:", mac)
 
 
 def wordlist():
+    os.system('clear')
+    print(Fore.BLUE, banner)
     characters = string.ascii_letters + string.digits + string.punctuation
-
-    generated_passwords = np.array([])
-
     password_queue = queue.Queue()
 
     def generate_passwords():
@@ -873,20 +876,35 @@ def wordlist():
 
     password_length = input("Enter the desired password length: ")
 
+    total_possible_passwords = len(characters) ** int(password_length)
+
+    animation_frame = 0
+    animation_frames = ['|', '/', '-', '\\']
+
     for _ in range(os.cpu_count()):
         t = threading.Thread(target=generate_passwords)
         t.daemon = True
         t.start()
 
+    generated_passwords = set()
+
     while True:
         password = password_queue.get()
-
-        if np.in1d(password, generated_passwords):
+        if password in generated_passwords:
             continue
         else:
-            generated_passwords = np.append(generated_passwords, password)
-            with open("generated_passwords.txt", "a") as f:
+            generated_passwords.add(password)
+            with open("generated_wordlist.txt", "a") as f:
                 f.write(password + "\n")
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f'{len(generated_passwords)}/{total_possible_passwords} passwords generated {animation_frames[animation_frame % len(animation_frames)]}')
+        animation_frame += 1
+
+        time.sleep(0.1)
+
+        if len(generated_passwords) == total_possible_passwords:
+            break
 
 
 def general():
