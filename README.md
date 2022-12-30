@@ -1,4 +1,16 @@
-[![GitHub license](https://img.shields.io/github/license/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator) [![GitHub stars](https://img.shields.io/github/stars/furjac/Advanced-payload-generator)](https://github.com/furjac/Advanced-payload-generator/stargazers) ![GitHub all releases](https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total) [![Join the FG_Trams discord server](https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2)](https://discord.gg/YN9RKxewsq)  ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/furjac/FG_Teams)
+<p align="center">
+<a href="https://github.com/furjac/Advanced-payload-generator">
+    <img src="https://img.shields.io/github/license/furjac/Advanced-payload-generator" alt="GitHub license" />
+  </a>
+  <a href="https://github.com/furjac/Advanced-payload-generator/stargazers">
+    <img src="https://img.shields.io/github/stars/furjac/Advanced-payload-generator" alt="GitHub stars" />
+  </a>
+  <img src="https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total" alt="GitHub all releases" />
+  <a href="https://discord.gg/YN9RKxewsq">
+    <img src="https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2" alt="Join the FG_Trams discord server" />
+  </a>
+  <img src="https://img.shields.io/github/v/release/furjac/FG_Teams" alt="GitHub release (latest SemVer)" />
+</p>
 
 # FG_TEAMS 
 Note: In piracy secttion we do not store any files. We only embed or link to content which is hosted on 3rd party services. thank you!
