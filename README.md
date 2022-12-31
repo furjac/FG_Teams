@@ -46,6 +46,7 @@ sudo python FG_Teams.py
 10. create any type of payload
 11. Generate powerful wordlist
 12. Hack almost everything ios,mac,etc...
+13. ssh bruteforce new feature
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
