@@ -25,6 +25,7 @@ too many people avoid arch but this is the best os
 git clone httsp://github.com/furjac/FG_Teams.git
 
 cd FG_Teams
+
 sudo pip install -r requirements.txt
 
 sudo python FG_Teams.py
