@@ -28,7 +28,7 @@ warnings.filterwarnings("ignore")
 # note there is too many things pending in this software it will be updated soon
 
 
-script_version = '1.5.11'
+script_version = '1.5.12'
 
 
 # <---main-menu--->
