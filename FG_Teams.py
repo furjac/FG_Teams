@@ -39,7 +39,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [1] Android                    |       [7] IOS         ️                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [2] ssh-bruteforce             |       [8] ftp-bruteforce                ||                                                                                        
+        ||          [2] bruteforce                 |       [8]                               ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [3] steganography              |       [9] Piracy                        ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -564,6 +564,22 @@ def ftp_bruteforce():
     t.start()
     time.sleep(0.2)
 
+def bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    print('\n\n1. SSH bruteforce')
+    print('\n2. FTP bruteforce')
+    brute = input('\n\n\nFG_Teams: ')
+
+    if brute == '1':
+        ssh_bruteforce()
+    elif brute == '2':
+        ftp_bruteforce()
+    else:
+        print('invalid argument exiting')
+        sys.exit()
+
 def Steganography_extract():
     os.system('clear')
     print(Fore.BLUE, banner)
@@ -1047,7 +1063,7 @@ def main():
     if me == '1':
         Android()
     elif me == '2':
-        ssh_bruteforce()
+        bruteforce()
     elif me == '3':
         Steganography()
     elif me == '4':
@@ -1059,7 +1075,7 @@ def main():
     elif me == '7':
         coming_soon()
     elif me == '8':
-        ftp_bruteforce()
+        ...
     elif me == '9':
         Piracy()
     elif me == '10':
