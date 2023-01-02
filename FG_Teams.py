@@ -37,9 +37,9 @@ menu = """
         ||                                        MENU                                       ||                                                                                        
         ||-----------------------------------------------------------------------------------||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [1] Android                    |       [7] IOS         ️                  ||                                                                                        
+        ||          [1] Android                    |       [7] IOS                           ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [2] bruteforce                 |       [8]                               ||                                                                                        
+        ||          [2] bruteforce                 |       [8] phishing                      ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [3] steganography              |       [9] Piracy                        ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -47,7 +47,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [5] Backdoors with msfvenom    |       [11] More                         ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [6] Ghostnet    ️               |       [0] Exit                          ||                                                                                        
+        ||          [6] Ghostnet                   |       [0] Exit                          ||                                                                                        
          ------------------------------------------------------------------------------------- 
 """
 
@@ -60,7 +60,7 @@ next_menu = """
         ||                                         |                                         ||                                                                                        
         ||          [12] Web-attacks               |       [18] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [13] blackarch-wifi             |       [19] coming soon                 ||                                                                                        
+        ||          [13] blackarch-wifi            |        [19] coming soon                 ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [14] coming soon               |       [20] coming soon                  ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -564,18 +564,91 @@ def ftp_bruteforce():
     t.start()
     time.sleep(0.2)
 
+
+def gmail_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    mail = input('\n\nEnter the mail adress: ')
+    plist = input('\nEnter the password-list path(/path/to/file): ')
+    proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
+
+    os.system(f'brute-force -g {mail} -l {plist} -X {proxy_list}')
+
+
+def hotmail_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    mail = input('\n\nEnter the mail adress: ')
+    plist = input('\nEnter the password-list path(/path/to/file): ')
+    proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
+
+    os.system(f'brute-force -t {mail} -l {plist} -X {proxy_list}')
+
+
+def facebook_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    mail = input('\n\nEnter the mail adress or username: ')
+    plist = input('\nEnter the password-list path(/path/to/file): ')
+    proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
+
+    os.system(f'brute-force -f {mail} -l {plist} -X {proxy_list}')
+
+def twitter_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    mail = input('\n\nEnter the mail adress or username: ')
+    plist = input('\nEnter the password-list path(/path/to/file): ')
+    proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
+
+    os.system(f'brute-force -T {mail} -l {plist} -X {proxy_list}')
+
+
+
+def netflix_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\nselect an option')
+    mail = input('\n\nEnter the mail adress or username: ')
+    plist = input('\nEnter the password-list path(/path/to/file): ')
+    proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
+
+    os.system(f'brute-force -n {mail} -l {plist} -X {proxy_list}')
+
 def bruteforce():
     os.system('clear')
     print(Fore.BLUE, banner)
     print('\nselect an option')
-    print('\n\n1. SSH bruteforce')
-    print('\n2. FTP bruteforce')
+    print('\n\n1. SSH')
+    print('\n2. FTP')
+    print('\n3. Gmail')
+    print('\n4. Hotmail')
+    print('\n5, Facebook')
+    print('\n6. Twitter')
+    print('\n7. Netflix')
+    print('\n8. Instagram')
     brute = input('\n\n\nFG_Teams: ')
 
     if brute == '1':
         ssh_bruteforce()
     elif brute == '2':
         ftp_bruteforce()
+    elif brute == '3':
+        gmail_bruteforce()
+    elif brute == '4':
+        hotmail_bruteforce()
+    elif brute == '5':
+        facebook_bruteforce()
+    elif brute == '6':
+        twitter_bruteforce()
+    elif brute == '7':
+        netflix_bruteforce()
+    elif brute == '8':
+        instagram_brutforce()
     else:
         print('invalid argument exiting')
         sys.exit()
@@ -1075,7 +1148,7 @@ def main():
     elif me == '7':
         coming_soon()
     elif me == '8':
-        ...
+        coming_soon()
     elif me == '9':
         Piracy()
     elif me == '10':
@@ -1117,13 +1190,6 @@ def installer():
         subprocess.call(['yes | pacman -S nyx macchanger tor gnu-netcat socat bleachbit'], shell=True,
                         stdout=subprocess.DEVNULL,
                         stderr=subprocess.STDOUT)
-
-    # black-arch tools
-    # ba = input('would you like to install all blackarch tools its almost 15gb (Y/n): ').lower()
-    # if ba == 'y':
-    #     print('This is under development')
-    # else:
-    #     pass
 
     # Steghide
     rc = subprocess.call(['which', 'steghide'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
@@ -1184,6 +1250,14 @@ def installer():
         subprocess.call(['yes | pacman -S android-sdk-build-tools'], shell=True, stdout=subprocess.DEVNULL,
                         stderr=subprocess.STDOUT)
 
+    rc = subprocess.call(['which', 'brute-force'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    if rc == 0:
+        print('zipalign is installed! ✔️')
+    else:
+        print('brute-force is not installed! \ninstalling brute-force')
+        subprocess.call(['yes | pacman -S brute-force'], shell=True, stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
+
     # apksigner
     jr = subprocess.call(['which', 'apksigner'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     if jr == 0:
@@ -1221,15 +1295,15 @@ def installer():
 
 
 def check_connection():
-    with open('/opt/fg.log', 'r') as logf:
-        if logf.readline() == "checked=True":
-            pass
-            logf.close()
-        else:
-            installer()
-            with open('/opt/fg.log', 'w') as logf:
-                logf.write('checked=True')
+    if os.path.isfile('/opt/fg.log'):
+        with open('/opt/fg.log', 'r') as logf:
+            if logf.readline() == "checked=True":
                 logf.close()
+    else:
+        installer()
+        with open('/opt/fg.log', 'w') as logf:
+            logf.write('checked=True')
+            logf.close()
 
 if __name__ == '__main__':
     try:

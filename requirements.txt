@@ -44,3 +44,8 @@ Werkzeug==2.0.2
 WMI==1.5.1; platform_system == "Windows"
 wsproto==1.1.0
 paramiko
+mechanize
+proxylist
+libtorrent
+numpy
+tqdm
