@@ -43,7 +43,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [4] Mac OS                     |       [10] general                      ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [5] Backdoors with msfvenom    |       [11] More                         ||                                                                                        
+        ||          [5] wireless-attacks           |       [11] More                         ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [6] Ghostnet                   |       [0] Exit                          ||                                                                                        
          ------------------------------------------------------------------------------------- 
@@ -871,13 +871,31 @@ def Mac():
     print(Fore.BLUE, banner)
     choose()
 
+def Airgeddon():
+    rc = subprocess.call(['which', 'airgeddon'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    if rc != 0:
+        print('airgeddon is not installed \ninstalling')
+        subprocess.call(['yes | pacman -S airgeddon'], shell=True,
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
+
+    os.system('airgeddon')
 
 
-
-def Backdoors():
+def wireless():
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('0. exit')
+    print('\n\n1. Airgeddon')
+    print('\n2. coming soon')
+
+    wire = input('FG_Teams: ')
+    if wire == '1':
+        Airgeddon()
+    elif wire == '':
+        Airgeddon()
+    else:
+        print('invalid argument exiting')
+        sys.exit()
 
 
 def Ghostnet():
@@ -1149,7 +1167,7 @@ def main():
     elif me == '4':
         Mac()
     elif me == '5':
-        Backdoors()
+        wireless()
     elif me == '6':
         Ghostnet()
     elif me == '7':
