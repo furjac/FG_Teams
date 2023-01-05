@@ -47,6 +47,7 @@ sudo python FG_Teams.py
 10. create any type of payload
 11. Generate powerful wordlist
 12. Bruteforce ssh,ftp,netflix,hotmail,twitter,gmail,instagram
+13. Bruteforce instagram [Credits - Mohamed]
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
@@ -59,3 +60,4 @@ sudo python FG_Teams.py
 
 # Credits
 1. mach1el
+2. Mohamed
