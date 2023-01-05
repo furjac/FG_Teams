@@ -619,6 +619,10 @@ def netflix_bruteforce():
 
     os.system(f'lib/./brute-force -n {mail} -l {plist} -X {proxy_list}')
 
+
+def instagram_bruteforce():
+    pass
+
 def bruteforce():
     os.system('clear')
     print(Fore.BLUE, banner)
@@ -648,7 +652,7 @@ def bruteforce():
     elif brute == '7':
         netflix_bruteforce()
     elif brute == '8':
-        instagram_brutforce()
+        instagram_bruteforce()
     else:
         print('invalid argument exiting')
         sys.exit()
@@ -1181,6 +1185,8 @@ def installer():
 
     print("Checking for the needed modules")
 
+    os.system('chmod 777 insta lib/brute-force')
+
     # nyx tor macchanger
     rc = subprocess.call(['which', 'tor'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     if rc == 0:
@@ -1248,14 +1254,6 @@ def installer():
     else:
         print('zipalign is not installed! \ninstalling zipalign')
         subprocess.call(['yes | pacman -S android-sdk-build-tools'], shell=True, stdout=subprocess.DEVNULL,
-                        stderr=subprocess.STDOUT)
-
-    rc = subprocess.call(['which', 'brute-force'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-    if rc == 0:
-        print('zipalign is installed! ✔️')
-    else:
-        print('brute-force is not installed! \ninstalling brute-force')
-        subprocess.call(['yes | pacman -S brute-force'], shell=True, stdout=subprocess.DEVNULL,
                         stderr=subprocess.STDOUT)
 
     # apksigner
