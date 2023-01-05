@@ -46,7 +46,7 @@ sudo python FG_Teams.py
 9. anonimize
 10. create any type of payload
 11. Generate powerful wordlist
-12. ssh bruteforce new feature
+12. Bruteforce ssh,ftp,netflix,hotmail,twitter,gmail,instagram
 
 # Prerequisites
 1. install chaotic-aur in arch linux if u dont have
