@@ -36,7 +36,7 @@ sudo python FG_Teams.py
 
 # Features
 1. Backdoor in original apk
-2. more options 
+2. Payload for Ios and Mac os
 3. easy to use interface
 4. Backdoor app encryption
 5. all types of encoders and encryption supported
