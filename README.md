@@ -41,7 +41,7 @@ sudo python FG_Teams.py
 4. Backdoor app encryption
 5. all types of encoders and encryption supported
 6. Ghostnet script[anonymize tool] - credit mach1el
-7. you can hack anything 
+7. Stegonography
 8. piracy download anything online books, movies, games, repacked games
 9. anonimize
 10. create any type of payload
