@@ -1,26 +1,24 @@
-import sys
-import time
-import os
-import subprocess
-import socket
-from scapy.all import get_if_list
-import requests
-from getmac import get_mac_address
-from colorama import Fore
-import random
-import string
-import threading
-import queue
-import numpy as np
-import warnings
 import csv
 import ipaddress
+import logging
+import os
+import queue
+import random
+import socket
+import string
+import subprocess
+import sys
 import threading
 import time
-import logging
-from logging import NullHandler
-from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
+import warnings
 from ftplib import FTP
+from logging import NullHandler
+
+import requests
+from colorama import Fore
+from getmac import get_mac_address
+from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
+from scapy.all import get_if_list
 
 warnings.filterwarnings("ignore")
 
