@@ -619,6 +619,8 @@ def netflix_bruteforce():
 
 
 def instagram_bruteforce():
+    os.system('clear')
+    print(Fore.BLUE, banner)
     ins_user = input('Enter the target username: ')
     ins_passlist = input('Enter the passlist directory: ')
     ins_proxy = input('Enter the proxylist file path: ')
