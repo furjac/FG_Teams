@@ -1,5 +1,5 @@
 colorama
-requests
+requests-html
 selenium
 getmac
 scapy
