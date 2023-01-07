@@ -624,7 +624,7 @@ def instagram_bruteforce():
     ins_proxy = input('Enter the proxylist file path: ')
     ins_mode = input('Enter modes: 0 => 32 bots; 1 => 16 bots; 2 => 8 bots; 3 => 4 bots: ')
     os.system('clear')
-    os.system(f'insta -u {ins_user} -p {ins_passlist} -px {ins_proxy} -m {ins_mode}')
+    os.system(f'./insta -u {ins_user} -p {ins_passlist} -px {ins_proxy} -m {ins_mode}')
 
 def bruteforce():
     os.system('clear')
