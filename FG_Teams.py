@@ -13,14 +13,14 @@ import time
 import warnings
 from ftplib import FTP
 from logging import NullHandler
-
+warnings.filterwarnings("ignore")
 import requests
 from colorama import Fore
 from getmac import get_mac_address
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
 from scapy.all import get_if_list
 
-warnings.filterwarnings("ignore")
+
 
 
 # note there is too many things pending in this software it will be updated soon
@@ -619,8 +619,6 @@ def netflix_bruteforce():
 
 
 def instagram_bruteforce():
-    os.system('clear')
-    print(Fore.BLUE, banner)
     ins_user = input('Enter the target username: ')
     ins_passlist = input('Enter the passlist directory: ')
     ins_proxy = input('Enter the proxylist file path: ')
