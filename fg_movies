@@ -29,7 +29,7 @@ def site_pirate_bay():
     options.add_argument('--allow-running-insecure-content')
 
     driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
-    driver.get('https://pbays.pw/')
+    driver.get('https://pbays.top/')
     time.sleep(5)
     driver.find_element("xpath", '//*[@id="all"]').click()
     driver.find_element("xpath", '//*[@id="video"]').click()
