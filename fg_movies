@@ -24,7 +24,7 @@ tamilmv_urls = []
 def site_pirate_bay():
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=chrome')
-    options.add_extension('/usr/bin/ad.crx')
+    options.add_extension('/usr/bin/ad.zip')
     options.add_experimental_option("detach", True)
     options.add_argument('--allow-running-insecure-content')
 
@@ -148,7 +148,7 @@ def down():
     print('\nplease be patient your download will begin in few seconds')
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=chrome')
-    options.add_extension('/usr/bin/ad.crx')
+    options.add_extension('/usr/bin/ad.zip')
     options.add_argument("--disable-gpu")
     options.add_experimental_option("detach", True)
     options.add_argument('--allow-running-insecure-content')
