@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2022 Furjack
+Copyright (c) 2023 Furjack
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ from scapy.all import get_if_list
 # note there is too many things pending in this software it will be updated soon
 
 
-script_version = '1.5.12'
+script_version = '1.6.10'
 
 
 # <---main-menu--->
@@ -1258,7 +1258,7 @@ def installer():
         print('fg_movies is not installed \ninstalling')
         subprocess.call(['chmod +x ' + str(os.getcwd()) + '/fg_movies '], shell=True,
                         stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-        subprocess.call(['mv ' + str(os.getcwd()) + '/fg_movies ' + str(os.getcwd()) + '/ad.crx /usr/bin/'],
+        subprocess.call(['mv ' + str(os.getcwd()) + '/fg_movies ' + str(os.getcwd()) + '/ad.zip /usr/bin/'],
                         shell=True,
                         stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
 
