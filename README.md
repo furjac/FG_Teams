@@ -5,8 +5,6 @@
   <a href="https://github.com/furjac/Advanced-payload-generator/stargazers">
     <img src="https://img.shields.io/github/stars/furjac/Advanced-payload-generator" alt="GitHub stars" />
   </a>
-  <img src="https://img.shields.io/github/downloads/furjac/Advanced-payload-generator/total" alt="GitHub all releases" />
-  <a href="https://discord.gg/YN9RKxewsq">
     <img src="https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2" alt="Join the FG_Trams discord server" />
   </a>
   <img src="https://img.shields.io/github/v/release/furjac/FG_Teams" alt="GitHub release (latest SemVer)" />
