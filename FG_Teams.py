@@ -904,24 +904,11 @@ def IOS():
 def Piracy():
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('\n\n\n1. movie download')
-    print('\n2. game download')
-    print('\n3. repacked game download')
-    print('\n4. books download')
-
-    pc = input('FG_Teams: ')
-
-    if pc == '1':
-        os.system('fg_movies')
-    elif pc == '2':
-        coming_soon()
-    elif pc == '3':
-        coming_soon()
-    elif pc == '':
-        os.system('fg_movies')
-    else:
-        print('invalid argument exiting')
-        sys.exit()
+    ask = input('Would you like to edit the proxy.txt(y/n) or are you in a foriegn country where there is no black on any site if yes just press enter: ')
+    if ask == '':
+        os.system('FG_Torrents/main')
+    elif ask == 'y':
+        ...
 
 def WebApp():
     os.system('clear')

@@ -23,6 +23,14 @@ too many people avoid arch but this is the best os
 
 **Im arch user BTW**
 
+# Support
+   Consider a donation to keep this project alive and for the countless hours of works and testing :)
+  
+  **Bitcoin :** `14GSZ1293s65JjytCjZMz3AFNSUa4ZVN2V`
+  
+  **XMR :** `42GyVekn3tufQjYQS9iN79g9MhzfLDgiu3HVAifDfNuW8MA2bi2UPagXo5ZPzA8rupERybjWsMv5HP7azinFbBxcFf9FW86`
+
+  **UPI :** `furjack@ybl`
 
 # Installation
 git clone httsp://github.com/furjac/FG_Teams.git

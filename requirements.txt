@@ -49,3 +49,12 @@ proxylist
 libtorrent
 numpy
 tqdm
+requests
+chromedriver-autoinstaller
+pyfiglet
+fake-useragent
+selenium
+pillow
+BeautifulSoup4
+colorama
+qbittorrent-api
