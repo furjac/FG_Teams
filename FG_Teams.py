@@ -79,9 +79,9 @@ next_menu = """
         ||                                        MENU                                       ||                                                                                        
         ||-----------------------------------------------------------------------------------||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [12] Web-attacks               |       [18] coming soon                  ||                                                                                        
+        ||          [12] Webapp                    |       [18] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [13] blackarch-wifi            |        [19] coming soon                 ||                                                                                        
+        ||          [13] coming soon               |       [19] coming soon                  ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [14] coming soon               |       [20] coming soon                  ||                                                                       
         ||                                         |                                         ||                                                                                        
@@ -150,176 +150,53 @@ def encryption():
     global enc
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('plz select encryption')
-    print('\n\n1. aes256')
-    print('\n2. base64')
-    print('\n3. rc4')
-    print('\n4. xor')
+    print("Please select encryption:\n")
 
-    lock = input('\n\nEnter the encryption (default=3): ')
+    encryption_list = ["aes256", "base64", "rc4", "xor"]
 
-    if lock == '1':
-        enc = 'aes256'
-    elif lock == '2':
-        enc = 'base64'
-    elif lock == '3':
-        enc = 'rc4'
-    elif lock == '4':
-        enc = 'xor'
-    elif lock == '':
-        enc = 'rc4'
-    else:
-        print('invalid argument exiting')
+    for i, enc_type in enumerate(encryption_list, start=1):
+        print(f"{i}. {enc_type}")
+
+    lock = input("\nEnter the encryption (default=3): ").strip()
+
+    try:
+        enc = encryption_list[int(lock) - 1] if lock else "rc4"
+    except (ValueError, IndexError):
+        print("Invalid argument. Exiting!")
         sys.exit(0)
-
 
 def encoders():
     global e
+
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('plz select encoders')
-    print('\n\n1. cmd/brace')
-    print('\n2. cmd/echo')
-    print('\n3. cmd/generic_sh')
-    print('\n4. cmd/ifs')
-    print('\n5. cmd/perl')
-    print('\n6. cmd/powershell_base64')
-    print('\n7. cmd/printf_php_mq')
-    print('\n8. generic/eicar')
-    print('\n9. generic/none')
-    print('\n10. mipsbe/byte_xori')
-    print('\n11. mipsbe/longxor')
-    print('\n12. mipsle/byte_xori')
-    print('\n13. mipsle/longxor')
-    print('\n14. php/base64')
-    print('\n15. ppc/longxor')
-    print('\n16. ppc/longxor_tag')
-    print('\n17. ruby/base64')
-    print('\n18. sparc/longxor_tag')
-    print('\n19. x64/xor')
-    print('\n20. x64/xor_context')
-    print('\n21. x64/xor_dynamic')
-    print('\n22. x64/zutto_dekiru')
-    print('\n23. x86/add_sub')
-    print('\n24. x86/alpha_mixed')
-    print('\n25. x86/alpha_upper')
-    print('\n26. x86/avoid_underscore_tolower')
-    print('\n27. x86/avoid_utf8_tolower')
-    print('\n28. x86/bloxor')
-    print('\n29. x86/bmp_polyglot')
-    print('\n30. x86/call4_dword_xor')
-    print('\n31. x86/context_cpuid')
-    print('\n32. x86/context_stat')
-    print('\n33. x86/context_time')
-    print('\n34. x86/countdown')
-    print('\n35. x86/fnstenv_mov')
-    print('\n36. x86/jmp_call_additive')
-    print('\n37. x86/nonalpha')
-    print('\n38. x86/nonupper')
-    print('\n39. x86/opt_sub')
-    print('\n40. x86/service')
-    print('\n41. x86/shikata_ga_nai')
-    print('\n42. x86/single_static_bit')
-    print('\n43. x86/unicode_mixed')
-    print('\n44. x86/unicode_upper')
-    print('\n45. x86/xor_dynamic')
+    print("Please select an encoder:\n")
 
-    encoder = input('\nselect encoder (default=41): ')
-    # <----Reading the user input---->
-    if encoder == '1':
-        e = 'cmd/brace'
-    elif encoder == '2':
-        e = 'cmd/echo'
-    elif encoder == '3':
-        e = 'cmd/generic_sh'
-    elif encoder == '4':
-        e = 'cmd/ifs'
-    elif encoder == '5':
-        e = 'cmd/perl'
-    elif encoder == '6':
-        e = 'cmd/powershell_base64'
-    elif encoder == '7':
-        e = 'cmd/printf_php_mq'
-    elif encoder == '8':
-        e = 'generic/eicar'
-    elif encoder == '9':
-        e = 'generic/none'
-    elif encoder == '10':
-        e = 'mipsbe/byte_xori'
-    elif encoder == '11':
-        e = 'mipsbe/longxor'
-    elif encoder == '12':
-        e = 'mipsle/byte_xori'
-    elif encoder == '13':
-        e = 'mipsle/longxor'
-    elif encoder == '14':
-        e = 'php/base64'
-    elif encoder == '15':
-        e = 'ppc/longxor'
-    elif encoder == '16':
-        e = 'ppc/longxor_tag'
-    elif encoder == '17':
-        e = 'ruby/base64'
-    elif encoder == '18':
-        e = 'sparc/longxor_tag'
-    elif encoder == '19':
-        e = 'x64/xor'
-    elif encoder == '20':
-        e = 'x64/xor_context'
-    elif encoder == '21':
-        e = 'x64/xor_dynamic'
-    elif encoder == '22':
-        e = 'x64/zutto_dekiru'
-    elif encoder == '23':
-        e = 'x86/add_sub'
-    elif encoder == '24':
-        e = 'x86/alpha_mixed'
-    elif encoder == '25':
-        e = 'x86/alpha_upper'
-    elif encoder == '26':
-        e = 'x86/avoid_underscore_tolower'
-    elif encoder == '27':
-        e = 'x86/avoid_utf8_tolower'
-    elif encoder == '28':
-        e = 'x86/bloxor'
-    elif encoder == '29':
-        e = 'x86/bmp_polyglot'
-    elif encoder == '30':
-        e = 'x86/call4_dword_xor'
-    elif encoder == '31':
-        e = 'x86/context_cpuid'
-    elif encoder == '32':
-        e = 'x86/context_stat'
-    elif encoder == '33':
-        e = 'x86/context_time'
-    elif encoder == '34':
-        e = 'x86/countdown'
-    elif encoder == '35':
-        e = 'x86/fnstenv_mov'
-    elif encoder == '36':
-        e = 'x86/jmp_call_additive'
-    elif encoder == '37':
-        e = 'x86/nonalpha'
-    elif encoder == '38':
-        e = 'x86/nonupper'
-    elif encoder == '39':
-        e = 'x86/opt_sub'
-    elif encoder == '40':
-        e = 'x86/service'
-    elif encoder == '41':
-        e = 'x86/shikata_ga_nai'
-    elif encoder == '42':
-        e = 'x86/single_static_bit'
-    elif encoder == '43':
-        e = 'x86/unicode_mixed'
-    elif encoder == '44':
-        e = 'x86/unicode_upper'
-    elif encoder == '45':
-        e = 'x86/xor_dynamic'
-    elif encoder == '':
-        e = 'x86/shikata_ga_nai'
-    else:
-        print('invalid argument exiting')
+    encoder_list = [
+        "cmd/brace", "cmd/echo", "cmd/generic_sh", "cmd/ifs", "cmd/perl",
+        "cmd/powershell_base64", "cmd/printf_php_mq", "generic/eicar", "generic/none",
+        "mipsbe/byte_xori", "mipsbe/longxor", "mipsle/byte_xori", "mipsle/longxor",
+        "php/base64", "ppc/longxor", "ppc/longxor_tag", "ruby/base64", "sparc/longxor_tag",
+        "x64/xor", "x64/xor_context", "x64/xor_dynamic", "x64/zutto_dekiru",
+        "x86/add_sub", "x86/alpha_mixed", "x86/alpha_upper", "x86/avoid_underscore_tolower",
+        "x86/avoid_utf8_tolower", "x86/bloxor", "x86/bmp_polyglot", "x86/call4_dword_xor",
+        "x86/context_cpuid", "x86/context_stat", "x86/context_time", "x86/countdown",
+        "x86/fnstenv_mov", "x86/jmp_call_additive", "x86/nonalpha", "x86/nonupper",
+        "x86/opt_sub", "x86/service", "x86/shikata_ga_nai", "x86/single_static_bit",
+        "x86/unicode_mixed", "x86/unicode_upper", "x86/xor_dynamic"
+    ]
+
+    # Display encoders dynamically
+    for i, enc in enumerate(encoder_list, start=1):
+        print(f"{i}. {enc}")
+
+    # Get user input
+    encoder = input("\nSelect encoder (default=41): ").strip()
+
+    try:
+        e = encoder_list[int(encoder) - 1] if encoder else "x86/shikata_ga_nai"
+    except (ValueError, IndexError):
+        print("Invalid argument. Exiting!")
         sys.exit()
 
 
@@ -327,41 +204,29 @@ def payloads():
     global pa
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('select what type of payload u want')
-    print('\n\n1. android/meterpreter_reverse_https')
-    print('\n2. android/meterpreter/reverse_https')
-    print('\n3. android/meterpreter_reverse_http')
-    print('\n4. android/meterpreter/reverse_http')
-    print('\n5. android/meterpreter_reverse_tcp')
-    print('\n6. android/meterpreter/reverse_tcp')
-    print('\n7. android/shell/reverse_https')
-    print('\n8. android/shell/reverse_http')
-    print('\n9. android/shell/reverse_tcp')
+    print("Select what type of payload you want:\n")
 
-    payload = input('\n\n\nEnter (default=6):')
-    # <----Reading the user input---->
-    if payload == '1':
-        pa = 'android/meterpreter_reverse_https'
-    elif payload == '2':
-        pa = 'android/meterpreter/reverse_https'
-    elif payload == '3':
-        pa = 'android/meterpreter_reverse_http'
-    elif payload == '4':
-        pa = 'android/meterpreter/reverse_http'
-    elif payload == '5':
-        pa = 'android/meterpreter_reverse_tcp'
-    elif payload == '6':
-        pa = 'android/meterpreter/reverse_tcp'
-    elif payload == '7':
-        pa = 'android/shell/reverse_https'
-    elif payload == '8':
-        pa = 'android/shell/reverse_http'
-    elif payload == '9':
-        pa = 'android/shell/reverse_tcp'
-    elif payload == '':
-        pa = 'android/meterpreter/reverse_tcp'
-    else:
-        print('invalid argument exiting')
+    payload_list = [
+        "android/meterpreter_reverse_https",
+        "android/meterpreter/reverse_https",
+        "android/meterpreter_reverse_http",
+        "android/meterpreter/reverse_http",
+        "android/meterpreter_reverse_tcp",
+        "android/meterpreter/reverse_tcp",
+        "android/shell/reverse_https",
+        "android/shell/reverse_http",
+        "android/shell/reverse_tcp"
+    ]
+
+    for i, payload in enumerate(payload_list, start=1):
+        print(f"{i}. {payload}")
+
+    choice = input("\nEnter (default=6): ").strip()
+
+    try:
+        pa = payload_list[int(choice) - 1] if choice else "android/meterpreter/reverse_tcp"
+    except (ValueError, IndexError):
+        print("Invalid argument. Exiting!")
         sys.exit()
 
 
@@ -369,32 +234,26 @@ def payloads_x_e():
     global p
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('select what type of payload u want')
-    print('\n\n1. android/meterpreter/reverse_https')
-    print('\n2. android/meterpreter/reverse_http')
-    print('\n3. android/meterpreter/reverse_tcp')
-    print('\n4. android/shell/reverse_https')
-    print('\n5. android/shell/reverse_http')
-    print('\n6. android/shell/reverse_tcp')
+    print("Select what type of payload you want:\n")
 
-    payload = input('\n\n\nEnter (default=6):')
-    # <----Reading the user input---->
-    if payload == '1':
-        p = 'android/meterpreter/reverse_https'
-    elif payload == '2':
-        p = 'android/meterpreter/reverse_http'
-    elif payload == '3':
-        p = 'android/meterpreter/reverse_tcp'
-    elif payload == '4':
-        p = 'android/shell/reverse_https'
-    elif payload == '5':
-        p = 'android/shell/reverse_http'
-    elif payload == '6':
-        p = 'android/shell/reverse_tcp'
-    elif payload == '':
-        p = 'android/meterpreter/reverse_tcp'
-    else:
-        print('invalid argument exiting')
+    payload_list = [
+        "android/meterpreter/reverse_https",
+        "android/meterpreter/reverse_http",
+        "android/meterpreter/reverse_tcp",
+        "android/shell/reverse_https",
+        "android/shell/reverse_http",
+        "android/shell/reverse_tcp"
+    ]
+
+    for i, payload in enumerate(payload_list, start=1):
+        print(f"{i}. {payload}")
+
+    choice = input("\nEnter (default=3): ").strip()
+
+    try:
+        p = payload_list[int(choice) - 1] if choice else "android/meterpreter/reverse_tcp"
+    except (ValueError, IndexError):
+        print("Invalid argument. Exiting!")
         sys.exit()
 
 
@@ -736,6 +595,27 @@ def Steganography():
         print('invalid argument exiting')
         sys.exit()
 
+def StegMenu():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\n\n1. matroschka')
+    print('\n2. openpuff')
+    print('\n3. pngcheck')
+    print('\n4. silenteye')
+    print('\n5. stegcracker')
+    print('\n6. stegdetect')
+    print('\n7. steghide')
+    print('\n8. stegolego')
+    print('\n9. stegoveritas')
+    print('\n10. stegseek')
+    print('\n11. stegsolve')
+    print('\n12. stepic')
+    print('\n13. zsteg')
+
+    steg = input('Enter your choice: ')
+    if steg == '7':
+        Steganography()
+
 
 def armor():
     os.system('clear')
@@ -756,108 +636,56 @@ def armor():
 
 def mac_payloads():
     global osx_pa
+
     os.system('clear')
     print(Fore.BLUE, banner)
-    print('select what type of payload u want')
-    print('\n\n1. osx/ppc/shell/bind_tcp')
-    print('\n2. osx/ppc/shell/find_tag')
-    print('\n3. osx/ppc/shell/reverse_tcp')
-    print('\n4. osx/ppc/shell_bind_tcp')
-    print('\n5. osx/ppc/shell_reverse_tcp')
-    print('\n6. osx/x64/dupandexecve/bind_tcp')
-    print('\n7. osx/x64/dupandexecve/reverse_tcp')
-    print('\n8. osx/x64/dupandexecve/reverse_tcp_uuid')
-    print('\n9. osx/x64/exec')
-    print('\n10. osx/x64/meterpreter/bind_tcp')
-    print('\n11. osx/x64/meterpreter/reverse_tcp')
-    print('\n12. osx/x64/meterpreter/reverse_tcp_uuid')
-    print('\n13. osx/x64/meterpreter_reverse_http')
-    print('\n14. osx/x64/meterpreter_reverse_https')
-    print('\n15. osx/x64/meterpreter_reverse_tcp')
-    print('\n16. osx/x64/say')
-    print('\n17. osx/x64/shell_bind_tcp')
-    print('\n18. osx/x64/shell_find_tag')
-    print('\n19. osx/x64/shell_reverse_tcp')
-    print('\n20. osx/x86/bundleinject/bind_tcp')
-    print('\n21. osx/x86/bundleinject/reverse_tcp')
-    print('\n22. osx/x86/exec')
-    print('\n23. osx/x86/isight/bind_tcp')
-    print('\n24. osx/x86/isight/reverse_tcp')
-    print('\n25. osx/x86/shell_bind_tcp')
-    print('\n26. osx/x86/shell_find_port')
-    print('\n27. osx/x86/shell_reverse_tcp')
-    print('\n28. osx/x86/vforkshell/bind_tcp')
-    print('\n29. osx/x86/vforkshell/reverse_tcp')
-    print('\n30. osx/x86/vforkshell_bind_tcp')
-    print('\n31. osx/x86/vforkshell_reverse_tcp')
+    print("Select what type of payload you want:\n")
 
-    osx_payload = input('\n\n\nEnter (default=6):')
-    if osx_payload == '1':
-        osx_pa = 'osx/ppc/shell/bind_tcp'
-    elif osx_payload == '2':
-        osx_pa = 'osx/ppc/shell/find_tag'
-    elif osx_payload == '3':
-        osx_pa = 'osx/ppc/shell/reverse_tcp'
-    elif osx_payload == '4':
-        osx_pa = 'osx/ppc/shell_bind_tcp'
-    elif osx_payload == '5':
-        osx_pa = 'osx/ppc/shell_reverse_tcp'
-    elif osx_payload == '6':
-        osx_pa = 'osx/x64/dupandexecve/bind_tcp'
-    elif osx_payload == '7':
-        osx_pa = 'osx/x64/dupandexecve/reverse_tcp'
-    elif osx_payload == '8':
-        osx_pa = 'osx/x64/dupandexecve/reverse_tcp_uuid'
-    elif osx_payload == '9':
-        osx_pa = 'osx/x64/exec'
-    elif osx_payload == '10':
-        osx_pa = 'osx/x64/meterpreter/bind_tcp'
-    elif osx_payload == '11':
-        osx_pa = 'osx/x64/meterpreter/reverse_tcp'
-    elif osx_payload == '12':
-        osx_pa = 'osx/x64/meterpreter/reverse_tcp_uuid'
-    elif osx_payload == '13':
-        osx_pa = 'osx/x64/meterpreter_reverse_http'
-    elif osx_payload == '14':
-        osx_pa = 'osx/x64/meterpreter_reverse_https'
-    elif osx_payload == '15':
-        osx_pa = 'osx/x64/meterpreter_reverse_tcp'
-    elif osx_payload == '16':
-        osx_pa = 'osx/x64/say'
-    elif osx_payload == '17':
-        osx_pa = 'osx/x64/shell_bind_tcp'
-    elif osx_payload == '18':
-        osx_pa = 'osx/x64/shell_find_tage'
-    elif osx_payload == '19':
-        osx_pa = 'osx/x64/shell_reverse_tcp'
-    elif osx_payload == '20':
-        osx_pa = 'osx/x86/bundleinject/bind_tcp'
-    elif osx_payload == '21':
-        osx_pa = 'osx/x86/bundleinject/reverse_tcp'
-    elif osx_payload == '22':
-        osx_pa = 'osx/x86/exec'
-    elif osx_payload == '23':
-        osx_pa = 'osx/x86/isight/bind_tcp'
-    elif osx_payload == '24':
-        osx_pa = 'osx/x86/isight/reverse_tcp'
-    elif osx_payload == '25':
-        osx_pa = 'osx/x86/shell_bind_tcp'
-    elif osx_payload == '26':
-        osx_pa = 'osx/x86/shell_find_port'
-    elif osx_payload == '27':
-        osx_pa = 'osx/x86/shell_reverse_tcp'
-    elif osx_payload == '28':
-        osx_pa = 'osx/x86/vforkshell/bind_tcp'
-    elif osx_payload == '29':
-        osx_pa = 'osx/x86/vforkshell/reverse_tcp'
-    elif osx_payload == '30':
-        osx_pa = 'osx/x86/vforkshell_bind_tcp'
-    elif osx_payload == '31':
-        osx_pa = 'osx/x86/vforkshell_reverse_tcp'
-    elif osx_payload == '':
-        osx_pa = 'osx/x64/meterpreter/reverse_tcp'
-    else:
-        print('invalid argument exiting')
+    payloads = [
+        "osx/ppc/shell/bind_tcp",
+        "osx/ppc/shell/find_tag",
+        "osx/ppc/shell/reverse_tcp",
+        "osx/ppc/shell_bind_tcp",
+        "osx/ppc/shell_reverse_tcp",
+        "osx/x64/dupandexecve/bind_tcp",
+        "osx/x64/dupandexecve/reverse_tcp",
+        "osx/x64/dupandexecve/reverse_tcp_uuid",
+        "osx/x64/exec",
+        "osx/x64/meterpreter/bind_tcp",
+        "osx/x64/meterpreter/reverse_tcp",
+        "osx/x64/meterpreter/reverse_tcp_uuid",
+        "osx/x64/meterpreter_reverse_http",
+        "osx/x64/meterpreter_reverse_https",
+        "osx/x64/meterpreter_reverse_tcp",
+        "osx/x64/say",
+        "osx/x64/shell_bind_tcp",
+        "osx/x64/shell_find_tag",
+        "osx/x64/shell_reverse_tcp",
+        "osx/x86/bundleinject/bind_tcp",
+        "osx/x86/bundleinject/reverse_tcp",
+        "osx/x86/exec",
+        "osx/x86/isight/bind_tcp",
+        "osx/x86/isight/reverse_tcp",
+        "osx/x86/shell_bind_tcp",
+        "osx/x86/shell_find_port",
+        "osx/x86/shell_reverse_tcp",
+        "osx/x86/vforkshell/bind_tcp",
+        "osx/x86/vforkshell/reverse_tcp",
+        "osx/x86/vforkshell_bind_tcp",
+        "osx/x86/vforkshell_reverse_tcp"
+    ]
+
+    # Display options dynamically
+    for i, payload in enumerate(payloads, start=1):
+        print(f"{i}. {payload}")
+
+    # Get user input
+    osx_payload = input("\nEnter choice (default=6): ").strip()
+
+    try:
+        osx_pa = payloads[int(osx_payload) - 1] if osx_payload else "osx/x64/meterpreter/reverse_tcp"
+    except (ValueError, IndexError):
+        print("Invalid argument. Exiting!")
         sys.exit()
 
 
@@ -909,12 +737,78 @@ def wireless():
     os.system('clear')
     print(Fore.BLUE, banner)
     print('\n\n1. Airgeddon')
-    print('\n2. coming soon')
+    print('\n2. Airflood')
+    print('\n3. Airopy')
+    print('\n4. Airoscript')
+    print('\n5. Airpwn')
+    print('\n6. Aphopper')
+    print('\n7. Apnbf')
+    print('\n8. Atear')
+    print('\n9. Auto-eap')
+    print('\n10. Batman-adv')
+    print('\n11. Batman-alfred')
+    print('\n12. Beholder')
+    print('\n13. Boopsuite')
+    print('\n14. Create_ap')
+    print('\n15. Eapeak')
+    print('\n16. Eaphammer')
+    print('\n17. Fern-wifi-cracker')
+    print('\n18. Free_wifi')
+    print('\n19. Fuzzap')
+    print('\n20. G72x++')
+    print('\n21. Gerix-wifi-cracker')
+    print('\n22. giskismet')
+    print('\n23. hashcatch')
+    print('\n24. hoover')
+    print('\n25. hostapd-wpe')
+    print('\n26. hotspotter')
+    print('\n27. Jcrack')
+    print('\n28. Kismet-earth')
+    print('\n29. kismet2earth')
+    print('\n30. Kismon')
+    print('\n31. Mana')
+    print('\n32. mdk3')
+    print('\n33. mfcuk')
+    print('\n34. mitmap')
+    print('\n35. mousejack')
+    print('\36. mtscan')
+    print('\n37. netattack')
+    print('\n38. nzyme')
+    print('\n39. pidense')
+    print('\n40. python-trackerjacker')
+    print('\n41. rfidiot')
+    print('\n42. rfidtool')
+    print('\n43. roguehostapd')
+    print('\n44. rtl8814au-dkms-git')
+    print('\n45. sniff-probe-req')
+    print('\n46. spectools')
+    print('\n47. timegen')
+    print('\n48. ubitack')
+    print('\n49. waidps')
+    print('\n50. wepbuster')
+    print('\n51. wi-feye')
+    print('\n52. wifi-pumpkin')
+    print('\n53. wifibroot')
+    print('\n54. wificurse')
+    print('\n55. wifijammer')
+    print('\n56. wifiphisher')
+    print('\n57. wifiscanmap')
+    print('\n58. wifitap')
+    print('\n59. wireless-ids')
+    print('\n60. wirouter-keyrec')
+    print('\n61. wlan2eth')
+    print('\n62. wpa-bruteforcer')
+    print('\n63. wpa2-halfhandshake-crack')
+    print('\n64. wpsik')
+    print('\n65. zizzania')
+    print('\n66. zykeys')
+
 
     wire = input('FG_Teams: ')
     if wire == '1':
         Airgeddon()
     elif wire == '':
+        print('invalid option using default')
         Airgeddon()
     else:
         print('invalid argument exiting')
@@ -1028,6 +922,19 @@ def Piracy():
     else:
         print('invalid argument exiting')
         sys.exit()
+
+def WebApp():
+    os.system('clear')
+    print(Fore.BLUE, banner)
+    print('\n\n\n1. 0d1n')
+    print('\n2. abuse-ssl-bypass-waf')
+    print('\n3. adfind')
+    print('\n4. adminpagefinder')
+    print('\n5. albatar')
+    print('\n6. anti-xss')
+    print('\n7. arachni')
+    print('\n8. astra')
+    print('\n9. atlas')
 
 
 def dis_monitor():
@@ -1186,7 +1093,7 @@ def main():
     elif me == '2':
         bruteforce()
     elif me == '3':
-        Steganography()
+        StegMenu()
     elif me == '4':
         Mac()
     elif me == '5':
@@ -1203,6 +1110,8 @@ def main():
         general()
     elif me == '11':
         More()
+    elif me == '12':
+        WebApp()
     elif me == '0':
         sys.exit(0)
     else:

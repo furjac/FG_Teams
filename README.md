@@ -9,12 +9,19 @@
 </p>
 
 # FG_TEAMS 
+Basically this software helps and makes everything easy for all hackers the time of using tools is reduced and this tool new update contains many features everyone wants hope you like it wait for the update.
+
+**Kindly do support the project.**
+
 Note: In piracy secttion we do not store any files. We only embed or link to content which is hosted on 3rd party services. thank you!
+
 
 This tool was created with python this software has too many pending works plz support me for all new updates in software Thanks, Love you all
 
 ok this one is only made for arch linux because 
 too many people avoid arch but this is the best os
+
+**Im arch user BTW**
 
 
 # Installation
@@ -53,7 +60,15 @@ sudo python FG_Teams.py
 # FG-Viewer
 1.for the instructions plz contact me on discord
 
+# TODO's
+- [ ] add all tools
+- [ ] simplify the tools usage
+- [ ] Notes on all the software
+- [ ] Updates based on black arch
+- [ ] Create beautiful CLI
+- [X] Make sure UX is better
 
 # Credits
 1. mach1el
 2. Mohamed
+If any missed lmk thanks

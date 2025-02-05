@@ -81,68 +81,14 @@ def download():
 
 def down():
     global link
-    if picked == '0':
-        r = 0
-    elif picked == '1':
-        r = 1
-    elif picked == '2':
-        r = 2
-    elif picked == '3':
-        r = 3
-    elif picked == '4':
-        r = 4
-    elif picked == '5':
-        r = 5
-    elif picked == '6':
-        r = 6
-    elif picked == '7':
-        r = 7
-    elif picked == '8':
-        r = 8
-    elif picked == '9':
-        r = 9
-    elif picked == '10':
-        r = 10
-    elif picked == '11':
-        r = 11
-    elif picked == '12':
-        r = 12
-    elif picked == '13':
-        r = 13
-    elif picked == '14':
-        r = 14
-    elif picked == '15':
-        r = 15
-    elif picked == '16':
-        r = 16
-    elif picked == '17':
-        r = 17
-    elif picked == '18':
-        r = 18
-    elif picked == '19':
-        r = 19
-    elif picked == '20':
-        r = 20
-    elif picked == '21':
-        r = 21
-    elif picked == '22':
-        r = 22
-    elif picked == '23':
-        r = 23
-    elif picked == '24':
-        r = 24
-    elif picked == '25':
-        r = 25
-    elif picked == '26':
-        r = 26
-    elif picked == '27':
-        r = 27
-    elif picked == '28':
-        r = 28
-    elif picked == '29':
-        r = 29
-    else:
-        print('invalid input \nexiting!')
+    try:
+        r = int(picked)
+        if 0 <= r <= 29:
+            pass  # You can add further logic here if needed
+        else:
+            raise ValueError
+    except ValueError:
+        print('Invalid input \nExiting!')
         sys.exit(0)
 
     print('\nplease be patient your download will begin in few seconds')
