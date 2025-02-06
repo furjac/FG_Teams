@@ -38,7 +38,7 @@ from ftplib import FTP
 from logging import NullHandler
 warnings.filterwarnings("ignore")
 import requests
-from colorama import Fore
+from colorama import Fore,Style
 from getmac import get_mac_address
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
 from scapy.all import get_if_list
@@ -105,7 +105,7 @@ banner = f"""
 |_______________________________________________________________|
 | im not responsible for any misuse of this software, Thanks ❤  |
 |_______________________________________________________________|by furjack
-note : Buy me a coffee https://paypal.me/furjack
+note : To keep this project up and running donate
 version = {script_version}
 """
 
@@ -127,7 +127,7 @@ def showIp():
 
 def options():
     global ipf, portf, outputf, iteratef
-    print('your ip is\n')
+    print(Fore.GREEN,'You can use this for below questions\n',Style.RESET_ALL)
     showIp()
     ipf = input('\nEnter your ip for LHOST: ')
     portf = input('\nEnter your port for LPORT: ')
