@@ -50,6 +50,7 @@ from scapy.all import get_if_list
 
 
 script_version = '1.6.10'
+PROXY_FILE = "/FG_Torrents/proxy.txt"
 
 
 # <---main-menu--->
@@ -902,13 +903,37 @@ def IOS():
 
 
 def Piracy():
-    os.system('clear')
-    print(Fore.BLUE, banner)
-    ask = input('Would you like to edit the proxy.txt(y/n) or are you in a foriegn country where there is no black on any site if yes just press enter: ')
+    os.system('clear')  # Clear screen
+    print(Fore.BLUE + "Your Banner Here" + Style.RESET_ALL)  # Ensure banner is defined
+    ask = input("Would you like to edit the proxy.txt (y/n) or press Enter if you are in a country without restrictions: ")
+    
     if ask == '':
-        os.system('FG_Torrents/main')
-    elif ask == 'y':
-        ...
+        os.system('/FG_Torrents/main')  # Ensure this path is correct
+    elif ask.lower() == 'y':
+        edit_proxy()
+        os.system('/FG_Torrents/main')
+    else:
+        print("Invalid input. Exiting.")
+        
+def edit_proxy():
+    print("\nCurrent Proxy Settings:\n")
+    
+    try:
+        with open(PROXY_FILE, 'r') as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("proxy.txt not found. Creating a new one.")
+
+    proxy_host = input("Enter Proxy Host (leave blank to keep current): ") or 'p.webshare.io'
+    proxy_port = input("Enter Proxy Port (leave blank to keep current): ") or '80'
+    proxy_user = input("Enter Proxy User (leave blank to keep current): ") or 'pbgbttrk-rotate'
+    proxy_pass = input("Enter Proxy Password (leave blank to keep current): ") or 'h2oktfdte1oh'
+
+    # Save new settings
+    with open(PROXY_FILE, 'w') as f:
+        f.write(f"PROXY_HOST = '{proxy_host}'\nPROXY_PORT = {proxy_port}\nPROXY_USER = '{proxy_user}'\nPROXY_PASS = '{proxy_pass}'\n")
+
+    print(Fore.GREEN + "Proxy settings updated successfully!" + Style.RESET_ALL)
 
 def WebApp():
     os.system('clear')
