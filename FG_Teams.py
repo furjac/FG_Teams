@@ -67,7 +67,7 @@ menu = """
         ||                                         |                                         ||                                                                                        
         ||          [4] Mac OS                     |       [10] general                      ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [5] wireless-attacks           |       [11] More                         ||                                                                                        
+        ||          [5] wireless-attacks           |       [11] Next Menu                    ||                                                                                        
         ||                                         |                                         ||                                                                                        
         ||          [6] Ghostnet                   |       [0] Exit                          ||                                                                                        
          ------------------------------------------------------------------------------------- 
@@ -80,17 +80,93 @@ next_menu = """
         ||                                        MENU                                       ||                                                                                        
         ||-----------------------------------------------------------------------------------||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [12] Webapp                    |       [18] coming soon                  ||                                                                                        
+        ||          [12] Webapp                    |       [18] Code-Audit                   ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [13] coming soon               |       [19] coming soon                  ||                                                                                        
+        ||          [13] Anti-Forensic             |       [19] Cracker                      ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [14] coming soon               |       [20] coming soon                  ||                                                                       
+        ||          [14] Automation                |       [20] Crypto                       ||                                                                       
         ||                                         |                                         ||                                                                                        
-        ||          [15] coming soon               |       [21] coming soon                  ||                                                                                        
+        ||          [15] Backdoor                  |       [21] Database                     ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [16] coming soon               |       [22] coming soon                  ||                                                                                        
+        ||          [16] Binary                    |       [22] Previous menu                ||                                                                                        
         ||                                         |                                         ||                                                                                        
-        ||          [17] coming soon               |       [00] Exit                         ||                                                                                        
+        ||          [17] Bluetooth                 |       [100] Next Menu                   ||                                                                                        
+         ------------------------------------------------------------------------------------- 
+"""
+
+third_menu = """ 
+         -------------------------------------------------------------------------------------                                                                                         
+        ||                                        MENU                                       ||                                                                                        
+        ||-----------------------------------------------------------------------------------||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [23] Debugger                  |       [29] Exploitation                 ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [24] Decompiler                |       [30] Fingerprint                  ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [25] Defensive                 |       [31] Firmware                     ||                                                                       
+        ||                                         |                                         ||                                                                                        
+        ||          [26] Disassembler              |       [32] Forensic                     ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [27] DOS                       |       [33] Previous menu                ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [28] Drone                     |       [100] Next Menu                   ||                                                                                        
+         ------------------------------------------------------------------------------------- 
+"""
+
+fourth_menu = """ 
+         -------------------------------------------------------------------------------------                                                                                         
+        ||                                        MENU                                       ||                                                                                        
+        ||-----------------------------------------------------------------------------------||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [34] Fuzzer                    |       [40] Miscellanious                ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [35] Hardware                  |       [41] Mobile                       ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [36] Honeypot                  |       [42] Networking                   ||                                                                       
+        ||                                         |                                         ||                                                                                        
+        ||          [37] IDS                       |       [43] NFC                          ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [38] Keylogger                 |       [44] Previous menu                ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [39] Malware                   |       [100] Next Menu                   ||                                                                                        
+         ------------------------------------------------------------------------------------- 
+"""
+
+fifth_menu = """ 
+         -------------------------------------------------------------------------------------                                                                                         
+        ||                                        MENU                                       ||                                                                                        
+        ||-----------------------------------------------------------------------------------||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [45] Packer                    |       [51] Sniffer                      ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [46] Proxy                     |       [52] Social                       ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [47] Radio                     |       [53] Spoof                        ||                                                                       
+        ||                                         |                                         ||                                                                                        
+        ||          [48] Recon                     |       [54] Tunnel                       ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [49] Reversing                 |       [55] Previous menu                ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [50] Scanner                   |       [100] Next Menu                   ||                                                                                        
+         ------------------------------------------------------------------------------------- 
+"""
+
+sixth_menu = """ 
+         -------------------------------------------------------------------------------------                                                                                         
+        ||                                        MENU                                       ||                                                                                        
+        ||-----------------------------------------------------------------------------------||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [56] Voip                      |                                         ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [57] BlackArch Windows         |                                         ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||          [58] Wireless                  |                                         ||                                                                       
+        ||                                         |                                         ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||                                         |       [59] Previous menu                ||                                                                                        
+        ||                                         |                                         ||                                                                                        
+        ||                                         |       [0] Exit                          ||                                                                                        
          ------------------------------------------------------------------------------------- 
 """
 
@@ -118,6 +194,7 @@ os.system("clear")
 def Banner():
     os.system("clear")
     print(Fore.BLUE, banner)
+
 
 def showIp():
     host_name = socket.gethostname()
@@ -4165,7 +4242,7 @@ def Firmware():
     Lister(tools)
 
 
-def FingerPrint():
+def Fingerprint():
     Banner()
     tools = [
         "asp-audit",
@@ -4465,6 +4542,120 @@ def general():
 def Others(): ...
 
 
+def Sixth_menu():
+    Banner()
+    print(sixth_menu)
+
+    selected = input("\n\nSelect your option: ")
+
+    if selected == "56":
+        Voip()
+    elif selected == "57":
+        BlackArch_windows()
+    elif selected == "58":
+        Wireless()
+    elif selected == "55":
+        Fifth_menu()
+    elif selected == "0":
+        sys.exit()
+
+
+def Fifth_menu():
+    Banner()
+    print(fifth_menu)
+
+    selected = input("\n\nSelect your option: ")
+
+    if selected == "45":
+        Packer()
+    elif selected == "46":
+        Proxy()
+    elif selected == "47":
+        Radio()
+    elif selected == "48":
+        Recon()
+    elif selected == "49":
+        Reversing()
+    elif selected == "50":
+        Scanner()
+    elif selected == "51":
+        Sniffer()
+    elif selected == "52":
+        Social()
+    elif selected == "53":
+        Spoof()
+    elif selected == "54":
+        Tunnel()
+    elif selected == "55":
+        Fourth_menu()
+    elif selected == "100":
+        Sixth_menu()
+
+
+def Fourth_menu():
+    Banner()
+    print(fourth_menu)
+
+    selected = input("\n\nSelect your option: ")
+
+    if selected == "34":
+        Fuzzer()
+    elif selected == "35":
+        Hardware()
+    elif selected == "36":
+        Honeypot()
+    elif selected == "37":
+        IDS()
+    elif selected == "38":
+        Keylogger()
+    elif selected == "39":
+        Malware()
+    elif selected == "40":
+        Misc()
+    elif selected == "41":
+        Mobile()
+    elif selected == "42":
+        Networking()
+    elif selected == "43":
+        NFC()
+    elif selected == "44":
+        Third_menu()
+    elif selected == "100":
+        Fifth_menu()
+
+
+def Third_menu():
+    Banner()
+    print(third_menu)
+
+    selected = input("\n\nSelect your option: ")
+
+    if selected == "23":
+        Debugger()
+    elif selected == "24":
+        Decompiler()
+    elif selected == "25":
+        Defensive()
+    elif selected == "26":
+        Disassembler()
+    elif selected == "27":
+        Dos()
+    elif selected == "28":
+        Drone()
+    elif selected == "29":
+        Exploitation()
+    elif selected == "30":
+        Fingerprint()
+    elif selected == "31":
+        Firmware()
+    elif selected == "32":
+        Forensic()
+    elif selected == "33":
+        More()
+    elif selected == "100":
+        Fourth_menu()
+
+
 def More():
     Banner()
     print(next_menu)
@@ -4473,8 +4664,28 @@ def More():
 
     if selected == "12":
         WebApp()
-    if selected == "13":
-        ...
+    elif selected == "13":
+        Anti_Forensic()
+    elif selected == "14":
+        Automation()
+    elif selected == "15":
+        BlackArch_Backdoor()
+    elif selected == "16":
+        Binary()
+    elif selected == "17":
+        Bluetooth()
+    elif selected == "18":
+        Code_Audit()
+    elif selected == "19":
+        Cracker()
+    elif selected == "20":
+        Crypto()
+    elif selected == "21":
+        Database()
+    elif selected == "22":
+        main()
+    elif selected == "100":
+        Third_menu()
 
 
 # <---main--->
@@ -4507,8 +4718,6 @@ def main():
         general()
     elif me == "11":
         More()
-    elif me == "12":
-        WebApp()
     elif me == "0":
         sys.exit(0)
     else:
