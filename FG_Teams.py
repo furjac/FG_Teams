@@ -247,8 +247,7 @@ def encryption():
     try:
         enc = encryption_list[int(lock) - 1] if lock else "rc4"
     except (ValueError, IndexError):
-        print("Invalid argument. Exiting!")
-        sys.exit(0)
+        main()
 
 
 def encoders():
@@ -315,9 +314,7 @@ def encoders():
     try:
         e = encoder_list[int(encoder) - 1] if encoder else "x86/shikata_ga_nai"
     except (ValueError, IndexError):
-        print("Invalid argument. Exiting!")
-        sys.exit()
-
+        main()
 
 def payloads():
     global pa
@@ -347,8 +344,7 @@ def payloads():
             else "android/meterpreter/reverse_tcp"
         )
     except (ValueError, IndexError):
-        print("Invalid argument. Exiting!")
-        sys.exit()
+        main()
 
 
 def payloads_x_e():
@@ -376,8 +372,7 @@ def payloads_x_e():
             else "android/meterpreter/reverse_tcp"
         )
     except (ValueError, IndexError):
-        print("Invalid argument. Exiting!")
-        sys.exit()
+        main()
 
 
 def msfvenom_x():
@@ -533,8 +528,7 @@ def Android():
         print("your payload is successfully created and stored in ../payload-apps/")
 
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def ssh_connect(host, username, password):
@@ -728,8 +722,7 @@ def bruteforce():
     elif brute == "8":
         instagram_bruteforce()
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def Steganography_extract():
@@ -786,8 +779,7 @@ def Steganography():
     elif stego_option == "3":
         Steganography_Info()
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def StegMenu():
@@ -892,8 +884,7 @@ def mac_payloads():
             else "osx/x64/meterpreter/reverse_tcp"
         )
     except (ValueError, IndexError):
-        print("Invalid argument. Exiting!")
-        sys.exit()
+        main()
 
 
 def mac_payload():
@@ -930,8 +921,7 @@ def choose():
     elif ch == "":
         mac_payload()
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def Mac():
@@ -1031,8 +1021,7 @@ def wireless():
         print("invalid option using default")
         Airgeddon()
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def Ghostnet():
@@ -1056,8 +1045,7 @@ def Ghostnet():
     elif g == "":
         os.system("ghostnet")
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def coming_soon():
@@ -1099,8 +1087,7 @@ def ios_payloads():
     elif ipayload == "":
         ios_pa = "osx/armle/shell_reverse_tcp.rb"
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def IOS():
@@ -1137,7 +1124,7 @@ def Piracy():
         edit_proxy()
         os.system("/FG_Torrents/main")
     else:
-        print("Invalid input. Exiting.")
+        main()
 
 
 def edit_proxy():
@@ -4535,8 +4522,7 @@ def general():
     elif ge == "8":
         wordlist()
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 def Others(): ...
@@ -4721,8 +4707,7 @@ def main():
     elif me == "0":
         sys.exit(0)
     else:
-        print("invalid argument exiting")
-        sys.exit()
+        main()
 
 
 # <----Checking root---->
